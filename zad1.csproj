@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generation.cs" />
+    <Compile Include="Genetics.cs" />
+    <Compile Include="Individual.cs" />
+    <Compile Include="PopulationInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
