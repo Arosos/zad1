@@ -7,15 +7,15 @@ namespace zad1
         public const int maxPopulation = 100, maxString = 30, generationNumber = 30;
         public const double pcross = 0.5, pmutation = 0.001;
 
-        public static int populationSize, stringSize, translation, leftmost;
+        public static int populationSize, stringSize, translation, leftmost, rightmost;
         static double[] coefficients;
 
         public static void GetInfo(string[] args)
         {
             leftmost = int.Parse(args[0]);
-            int right = int.Parse(args[1]);
+            rightmost = int.Parse(args[1]);
 
-            populationSize = right - leftmost + 1;
+            populationSize = rightmost - leftmost + 1;
             for (int i = 0; i < 10; i++)
                 if (Math.Pow(2, i) > populationSize)
                 {

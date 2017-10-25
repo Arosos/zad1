@@ -26,6 +26,11 @@ namespace zad1
             this.chromosome = chromosome;
             this.parent1 = parent1;
             this.parent2 = parent2;
+            x = Decode(chromosome);
+            if (x > PopulationInfo.rightmost)
+                fitness = 0;
+            else
+                fitness = PopulationInfo.Function(x);
         }
 
         BitArray Encode(int x)
@@ -39,6 +44,14 @@ namespace zad1
                 bitArray = new BitArray(new int[1] { x });
             }
             return bitArray;
+        }
+
+        int Decode(BitArray array)
+        {
+            int sum = 0;
+            for (int i = 0; i < PopulationInfo.stringSize; i++)
+                sum += array[i] ? (int)Math.Round(Math.Pow(2, PopulationInfo.stringSize - i - 1)) : 0;
+            return sum - PopulationInfo.translation;
         }
 
         public override string ToString()
@@ -73,7 +86,8 @@ namespace zad1
                 newChromosome1[i] = chromosome[i];
             for (int i = cross + 1; i < PopulationInfo.stringSize; i++)
                 newChromosome1[i] = otherParent.chromosome[i];
-            return new Individual(newChromosome1, this, otherParent);
+            Individual child1 = new Individual(newChromosome1, this, otherParent);
+            return child1;
         }
     }
 }
