@@ -13,22 +13,26 @@ namespace zad1
 
             Console.WriteLine(generations[0]);
 
-            Individual t1 = Genetics.Select(generations[0]);
-            Individual t2 = Genetics.Select(generations[0]);
-
-            Console.WriteLine(t1);
-            Console.WriteLine(t2);
-
-            Individual c1, c2;
-            Genetics.Crossover(t1, t2, out c1, out c2);
-
-            Console.WriteLine(c1);
-            Console.WriteLine(c2);
-
             for (int i = 1; i < PopulationInfo.generationNumber; i++)
             {
-
+                Generation generation = generations[i - 1];
+                Individual[] population = new Individual[PopulationInfo.populationSize];
+                for (int j = 0; j < PopulationInfo.populationSize; j += 2)
+                {
+                    Individual parent1 = Genetics.Select(generation);
+                    Individual parent2 = Genetics.Select(generation);
+                    Individual child1, child2;
+                    Genetics.Crossover(parent1, parent2, out child1, out child2);
+                    Genetics.Mutation(child1);
+                    Genetics.Mutation(child2);
+                    population[j] = child1;
+                    population[j + 1] = child2;
+                }
+                generations[i] = new Generation(population);
             }
+
+            foreach (Generation g in generations)
+                Console.WriteLine(g);
 
             Console.ReadKey();
         }

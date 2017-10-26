@@ -15,7 +15,7 @@ namespace zad1
             {
                 j++;
                 partsum += generation.population[j].fitness;
-            } while (partsum < rand && j != PopulationInfo.populationSize);
+            } while (partsum < rand && j != generation.population.Length);
             
             return generation.population[j];
         }

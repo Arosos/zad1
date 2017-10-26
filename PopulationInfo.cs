@@ -4,29 +4,30 @@ namespace zad1
 {
     public static class PopulationInfo
     {
-        public const int maxPopulation = 100, maxString = 30, generationNumber = 30;
-        public const double pcross = 0.5, pmutation = 0.001;
+        public const int maxPopulation = 100, maxString = 30, generationNumber = 10;
+        public const double pcross = 0.7, pmutation = 0.01;
 
-        public static int populationSize, stringSize, translation, leftmost, rightmost;
+        public static int firstGenerationSize, populationSize, stringSize, translation, leftmost, rightmost;
         static double[] coefficients;
 
         public static void GetInfo(string[] args)
         {
             leftmost = int.Parse(args[0]);
             rightmost = int.Parse(args[1]);
+            populationSize = int.Parse(args[2]);
 
-            populationSize = rightmost - leftmost + 1;
+            firstGenerationSize = rightmost - leftmost + 1;
             for (int i = 0; i < 10; i++)
-                if (Math.Pow(2, i) > populationSize)
+                if (Math.Pow(2, i) > firstGenerationSize)
                 {
                     stringSize = i;
                     break;
                 }
 
-            int functionDegree = args.Length - 2;
+            int functionDegree = args.Length - 3;
             coefficients = new double[functionDegree];
 
-            for (int i = 0, argsIndex = 2; i < functionDegree; i++, argsIndex++)
+            for (int i = 0, argsIndex = 3; i < functionDegree; i++, argsIndex++)
             {
                 if (args[argsIndex] != null)
                     coefficients[i] = double.Parse(args[argsIndex]);
