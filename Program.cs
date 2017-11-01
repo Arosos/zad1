@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace zad1
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             PopulationInfo.GetInfo(args);
@@ -34,7 +36,9 @@ namespace zad1
             foreach (Generation g in generations)
                 Console.WriteLine(g);
 
-            Console.ReadKey();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Chart());
         }
     }
 }
