@@ -20,7 +20,7 @@ namespace zad1
                 if (i.fitness > max)
                     max = i.fitness;
             }
-            average = sumfitness / PopulationInfo.populationSize;
+            average = sumfitness / population.Length;
         }
 
         public static Generation FirstGeneration(int leftmost)

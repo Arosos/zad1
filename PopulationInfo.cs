@@ -4,8 +4,8 @@ namespace zad1
 {
     public static class PopulationInfo
     {
-        public const int maxPopulation = 100, maxString = 30, generationNumber = 10;
-        public const double pcross = 0.7, pmutation = 0.01;
+        public const int maxPopulation = 100, maxString = 30, generationNumber = 30;
+        public const double pcross = 0.7, pmutation = 0.001;
 
         public static int firstGenerationSize, populationSize, stringSize, translation, leftmost, rightmost;
         static double[] coefficients;

@@ -5,11 +5,13 @@ namespace zad1
 {
     class Program
     {
+        public static Generation[] generations;
+
         [STAThread]
         static void Main(string[] args)
         {
             PopulationInfo.GetInfo(args);
-            Generation[] generations = new Generation[PopulationInfo.generationNumber];
+            generations = new Generation[PopulationInfo.generationNumber];
 
             generations[0] = Generation.FirstGeneration(PopulationInfo.leftmost);
 
